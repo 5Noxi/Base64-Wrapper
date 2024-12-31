@@ -4,7 +4,7 @@ Base64 encodes your script to obfuscate it, iterations make the file very large 
 ### Before
 ![before](https://github.com/5Noxi/Base64-Wrapper/blob/main/Before.png?raw=true) 
 ### After
-![after](https://github.com/5Noxi/Base64-Wrapper/blob/main/After.png?raw=true)
+![after](https://github.com/5Noxi/Base64-Wrapper/blob/main/After1.1.png?raw=true)
 
 ## Discord Server 
 - https://discord.gg/E2ybG4j9jU
