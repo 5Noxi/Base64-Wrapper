@@ -6,6 +6,9 @@ Base64 encodes your script to obfuscate it, iterations make the file very large 
 ### After
 ![after](https://github.com/5Noxi/Base64-Wrapper/blob/main/After.png?raw=true)
 
+## Discord Server 
+- https://discord.gg/E2ybG4j9jU
+
 ## How it works
 1. Gets content of input
 2. Converts content to b64
