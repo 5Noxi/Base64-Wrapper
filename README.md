@@ -11,12 +11,17 @@ Base64 encodes your script to obfuscate it, iterations make the file very large 
 
 ## How it works
 1. Gets content of input
-2. Converts content to b64
+2. Converts content to b64 & uses randomized MBA obfuscated iex command & strings
 3. Writes encoded payload into
 ```
 iex([System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String(b64payload)))
 ```
 4. Does this as often as you want (iterations)
+
+## Example for `UTF8` after MBA obfuscation
+```
+([char](((-15212 -Band 4405) + (-15212 -Bor 4405) + 3213 + 7679))+[char](((-1237 -Band 5295) + (-1237 -Bor 5295) - 8168 + 4226))+[char](((3833 -Band 616) + (3833 -Bor 616) + 1393 - 5772))+[char](((-1442 -Band 9351) + (-1442 -Bor 9351) - 9352 + 1499)))
+```
 
 ## Usage
 `nvi` -> Input
